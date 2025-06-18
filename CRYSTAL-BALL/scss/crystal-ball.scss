@@ -13,11 +13,16 @@ $font-family: 'Noto Sans', 'Noto Sans TC', 'Microsoft JhengHei', 'PingFang TC', 
 }
 html, body{
 	font-family: $font-family;
-	font-size: 17px; 
+	font-size: 15px; 
 	font-weight: 400;
 	line-height: 1.8;
     letter-spacing: .05em;
-	@media screen and (min-width: 992px) {
+	width: 100%;
+	height: 100%;
+	@media screen and (min-width: 768px) {
+    font-size: 17px;    
+    }
+	@media screen and (min-width: 1200px) {
     font-size: 19px;    
     }
 }
@@ -29,9 +34,9 @@ body{
 	height: 100%;
 	padding: 0;
 	margin: 0;
+	color: $body-color;
 	background: radial-gradient(circle at 33.333333% 50%, rgba(#e5d792, .5) 0%, rgba($secondary, .5) 60%, rgba($primary, .5) 100%); 
 	background-attachment: fixed;
-	color: $body-color;
 	@media screen and (min-width: 992px) {
 		overflow: hidden;
 	}
@@ -91,6 +96,7 @@ body{
 	top: 50%; 
 	left: 50%; 
 	transform: translate(-50%, -50%); 
+	max-width: 80%;
 	padding: 1rem 1.25rem; 
 	border-radius: .75rem; 
 	z-index: 9999; 
@@ -312,6 +318,13 @@ small, .small{
 .info-panel-btn {
 	text-align: right;
 	margin-top: .75rem;
+}
+
+.info-search .info-panel-title{
+	flex-direction: column;
+	@media screen and (min-width: 576px) {
+	flex-direction: row;	
+	}
 }
 
 .tree-menu-div{

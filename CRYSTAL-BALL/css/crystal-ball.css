@@ -1,11 +1,12 @@
 * { box-sizing: border-box; }
 
-html, body { font-family: "Noto Sans", "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", "Heiti TC", "LiHei Pro", sans-serif; font-size: 17px; font-weight: 400; line-height: 1.8; letter-spacing: .05em; }
-@media screen and (min-width: 992px) { html, body { font-size: 19px; } }
+html, body { font-family: "Noto Sans", "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", "Heiti TC", "LiHei Pro", sans-serif; font-size: 15px; font-weight: 400; line-height: 1.8; letter-spacing: .05em; width: 100%; height: 100%; }
+@media screen and (min-width: 768px) { html, body { font-size: 17px; } }
+@media screen and (min-width: 1200px) { html, body { font-size: 19px; } }
 
 html { scroll-behavior: smooth; }
 
-body { width: 100%; height: 100%; padding: 0; margin: 0; background: radial-gradient(circle at 33.333333% 50%, rgba(229, 215, 146, 0.5) 0%, rgba(22, 177, 64, 0.5) 60%, rgba(0, 103, 103, 0.5) 100%); background-attachment: fixed; color: #333; }
+body { width: 100%; height: 100%; padding: 0; margin: 0; color: #333; background: radial-gradient(circle at 33.333333% 50%, rgba(229, 215, 146, 0.5) 0%, rgba(22, 177, 64, 0.5) 60%, rgba(0, 103, 103, 0.5) 100%); background-attachment: fixed; }
 @media screen and (min-width: 992px) { body { overflow: hidden; } }
 
 .main { display: flex; flex-direction: column; }
@@ -20,7 +21,7 @@ body { width: 100%; height: 100%; padding: 0; margin: 0; background: radial-grad
   .main .info-panel:hover::-webkit-scrollbar-thumb { background-color: #FFD866; border-radius: 10px; } }
 @media screen and (min-width: 1560px) { .main .info-panel { flex: 0 0 33.3333333333%; } }
 
-.loading-msg { display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 1rem 1.25rem; border-radius: .75rem; z-index: 9999; font-size: 1.25rem; font-weight: 500; background-color: rgba(255, 255, 255, 0.35); box-shadow: inset 0 -10px 20px rgba(255, 255, 255, 0.25), inset 0 -5px 8px rgba(255, 255, 255, 0.25), 0 0 8px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.15); }
+.loading-msg { display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 80%; padding: 1rem 1.25rem; border-radius: .75rem; z-index: 9999; font-size: 1.25rem; font-weight: 500; background-color: rgba(255, 255, 255, 0.35); box-shadow: inset 0 -10px 20px rgba(255, 255, 255, 0.25), inset 0 -5px 8px rgba(255, 255, 255, 0.25), 0 0 8px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.15); }
 .loading-msg > i { margin-right: .5rem; background: inherit; -webkit-background-clip: text; -webkit-text-fill-color: #006767; background-clip: text; text-fill-color: #006767; background-position: 50% 100%; }
 .loading-msg > span { background: linear-gradient(to right, #006767 0%, #ffd700 33%, #4b0082 67%, #ff0000 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; background-position: 50% 100%; background-size: 500% 100%; background-position: left center; animation: gradientFadeIn-span 3s infinite alternate; }
 
@@ -74,6 +75,9 @@ small, .small { font-size: .9em; }
 .info-panel-card p:last-child { margin-bottom: 0; }
 
 .info-panel-btn { text-align: right; margin-top: .75rem; }
+
+.info-search .info-panel-title { flex-direction: column; }
+@media screen and (min-width: 576px) { .info-search .info-panel-title { flex-direction: row; } }
 
 .tree-menu-div { margin-bottom: .5rem; color: #006767; }
 .tree-menu-div .tree-menu-title { display: inline-block; cursor: pointer; }
