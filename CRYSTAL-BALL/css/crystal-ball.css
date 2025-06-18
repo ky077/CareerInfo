@@ -21,7 +21,7 @@ body { width: 100%; height: 100%; padding: 0; margin: 0; color: #333; background
   .main .info-panel:hover::-webkit-scrollbar-thumb { background-color: #FFD866; border-radius: 10px; } }
 @media screen and (min-width: 1560px) { .main .info-panel { flex: 0 0 33.3333333333%; } }
 
-.loading-msg { display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 80%; padding: 1rem 1.25rem; border-radius: .75rem; z-index: 9999; font-size: 1.25rem; font-weight: 500; background-color: rgba(255, 255, 255, 0.35); box-shadow: inset 0 -10px 20px rgba(255, 255, 255, 0.25), inset 0 -5px 8px rgba(255, 255, 255, 0.25), 0 0 8px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.15); }
+.loading-msg { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 15em; max-width: 80%; padding: 1rem 1.25rem; border-radius: .75rem; z-index: 9999; font-size: 1.25rem; font-weight: 500; background-color: rgba(255, 255, 255, 0.35); box-shadow: inset 0 -10px 20px rgba(255, 255, 255, 0.25), inset 0 -5px 8px rgba(255, 255, 255, 0.25), 0 0 8px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.15); text-align: center; }
 .loading-msg > i { margin-right: .5rem; background: inherit; -webkit-background-clip: text; -webkit-text-fill-color: #006767; background-clip: text; text-fill-color: #006767; background-position: 50% 100%; }
 .loading-msg > span { background: linear-gradient(to right, #006767 0%, #ffd700 33%, #4b0082 67%, #ff0000 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; background-position: 50% 100%; background-size: 500% 100%; background-position: left center; animation: gradientFadeIn-span 3s infinite alternate; }
 
