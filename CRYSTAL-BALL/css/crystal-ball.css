@@ -6,7 +6,7 @@ html, body { font-family: "Noto Sans", "Noto Sans TC", "Microsoft JhengHei", "Pi
 
 html { scroll-behavior: smooth; }
 
-body { width: 100%; height: 100%; padding: 0; margin: 0; color: #333; background: radial-gradient(circle at 33.333333% 50%, rgba(229, 215, 146, 0.5) 0%, rgba(22, 177, 64, 0.5) 60%, rgba(0, 103, 103, 0.5) 100%); background-attachment: fixed; }
+body { width: 100%; height: 100%; padding: 0; margin: 0; color: #333; background: radial-gradient(circle at 33.333333% 50%, rgba(229, 215, 146, 0.5) 0%, rgba(21, 168, 61, 0.5) 60%, rgba(0, 103, 103, 0.5) 100%); background-attachment: fixed; }
 @media screen and (min-width: 992px) { body { overflow: hidden; } }
 
 .main { display: flex; flex-direction: column; }
@@ -39,7 +39,7 @@ body { width: 100%; height: 100%; padding: 0; margin: 0; color: #333; background
 .input-group { position: relative; display: flex; flex-wrap: wrap; align-items: stretch; width: 100%; }
 .input-group .form-control { position: relative; flex: 1 1 auto; width: 1%; min-width: 0; }
 .input-group .form-control:first-child { border-top-right-radius: 0; border-bottom-right-radius: 0; }
-.input-group .btn { position: relative; z-index: 2; }
+.input-group .btn { position: relative; }
 .input-group .btn:last-child { border-top-left-radius: 0; border-bottom-left-radius: 0; border-left: 2px solid rgba(0, 103, 103, 0.25); }
 
 b, strong, .b, .strong { font-weight: 600; }
@@ -54,7 +54,7 @@ small, .small { font-size: .9em; }
 
 .text-primary { color: #006767; }
 
-.text-secondary { color: #16b140; }
+.text-secondary { color: #15A83D; }
 
 .text-tertiary { color: #FFD866; }
 
@@ -84,8 +84,8 @@ small, .small { font-size: .9em; }
 .tree-menu-div .tree-menu-title:hover { transition: .3s; letter-spacing: .1em; transform-origin: left center; }
 .tree-menu-div .tree-menu-ul { display: none; margin-top: .25rem; margin-bottom: .75rem; color: #555; list-style: none; }
 .tree-menu-div .tree-menu-ul li::before { content: " - "; margin-left: -.75em; }
-.tree-menu-div:hover { color: #16b140; }
-.tree-menu-div:hover .tree-menu-title > span { border-bottom: 1px dashed #16b140; }
+.tree-menu-div:hover { color: #15A83D; }
+.tree-menu-div:hover .tree-menu-title > span { border-bottom: 1px dashed #15A83D; }
 
-.tooltip { display: none; position: absolute; padding: .5rem; background-color: #16b140; color: #fff; border: 0; border-radius: 0 .5rem .5rem .5rem; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); max-width: 300px; font-size: .8rem; line-height: 1.5; z-index: 999; }
-.tooltip::before { content: ""; display: block; width: 0; height: 0; border-style: solid; border-width: 0 1rem .5rem 0; border-color: transparent #16b140 transparent transparent; position: absolute; top: 0; left: 0; transform: translateX(-100%); }
+.tooltip { display: none; position: absolute; padding: .5rem; background-color: #15A83D; color: #fff; border: 0; border-radius: 0 .5rem .5rem .5rem; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); max-width: 300px; font-size: .8rem; line-height: 1.5; z-index: 999; }
+.tooltip::before { content: ""; display: block; width: 0; height: 0; border-style: solid; border-width: 0 1rem .5rem 0; border-color: transparent #15A83D transparent transparent; position: absolute; top: 0; left: 0; transform: translateX(-100%); }
