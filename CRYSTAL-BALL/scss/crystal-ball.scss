@@ -28,7 +28,8 @@ html, body{
 }
 html{
 	scroll-behavior:smooth;
-	background-color: rgba($primary, .5);
+	background: radial-gradient(circle at 33.333333% 50%, rgba(#e5d792, .5) 0%, rgba($secondary, .5) 60%, rgba($primary, .5) 100%); 
+	background-attachment: fixed;
 }
 body{
 	width: 100%;
@@ -36,8 +37,7 @@ body{
 	padding: 0;
 	margin: 0;
 	color: $body-color;
-	background: radial-gradient(circle at 33.333333% 50%, rgba(#e5d792, .5) 0%, rgba($secondary, .5) 60%, rgba($primary, .5) 100%); 
-	background-attachment: fixed;
+	
 	@media screen and (min-width: 992px) {
 		overflow: hidden;
 	}
