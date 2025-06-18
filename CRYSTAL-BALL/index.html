@@ -693,7 +693,7 @@
             const resultDiv = document.getElementById("resultdiv");
 
             if (matched.length === 0) {
-                resultDiv.innerHTML = `查無與「${inputStr}」相關的學系資料。`;
+                resultDiv.innerHTML = `<div class="info-panel-card">查無與<big class="strong text-secondary">${inputStr}</big>相關的學系資料。</div>`;
                 return;
             }
 
