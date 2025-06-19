@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">	
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>生涯水晶球</title>
 <!-- google fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +11,7 @@
 <!--<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>--> 
 <script src="https://cdn.plot.ly/plotly-3.0.1.min.js" charset="utf-8"></script>
 <style id="plotly.js-style-global"></style>
-<!-- Icon Font Stylesheet --> 
+<!-- Icon Font Stylesheet -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 <!-- web Stylesheet -->
 <link rel="stylesheet" href="css/crystal-ball.css">
@@ -27,7 +27,12 @@
   <div class="main"> 
     <!-- 左側：3D 圖表區 -->
     <div id="plotArea" class="plot-area">
-      <div id="myDiv" style="width: 100%; height: 100%;" class="js-plotly-plot"> </div>
+      <div id="myDiv" class="js-plotly-plot" style="width: 100%; height: 100%; position: relative;">
+        <!--  demo圖，請刪掉 -->
+			<img src="img/ball-bg.png" alt="" style="position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; max-width: 100%; width: auto; max-height: 100%; height: auto;"/> 
+			<img src="img/ball-demo.png" alt="" style="position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; max-width: 100%; width: auto; max-height: 100%; height: auto;"/>
+	    <img src="img/ball-demo2.png" alt="" style="position: absolute; right: 5px; bottom: 10%;  width: 7%; max-width: 86px; min-width: 50px;"/>	    <!--  demo圖，請刪掉 --> 
+      </div>
       <button type="button" id="toggleRotation" class="btn btn-rotation">旋轉展示</button>
       <!--<button type="button" id="toggleRotation" class="btn-rotation rotating">暫停旋轉</button>	-->
       <button id="highlightBtn" style="position: absolute; top: 50px; left: 10px; z-index: 10;display:none">閃爍心理學類</button>
