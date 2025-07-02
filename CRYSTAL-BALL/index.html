@@ -34,8 +34,11 @@
 		<img src="img/ball-demo.png" alt=""  style="position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; max-width: 100%; width: auto; max-height: 95%; height: auto;"/> 
 		<img src="img/ball-demo2.png" alt="" style="position: absolute; right: 1%; bottom: 10%;  width: 7.8%; max-width: 100px; min-width: 70px;"/> <!--  demo圖，請刪掉 --> 
       </div>
-      <button type="button" id="toggleRotation" class="btn btn-rotation">旋轉展示</button>
-      <!--<button type="button" id="toggleRotation" class="btn-rotation rotating">暫停旋轉</button>	-->
+	  <div class="plot-btn">
+        <button type="button" id="toggleRotation" class="btn btn-custom btn-rotation">旋轉展示</button>
+        <!--<button type="button" id="toggleRotation" class="btn-rotation rotating">暫停旋轉</button>	-->
+	    <button type="button" id="moveBtn" class="btn btn-custom btn-move" style=" z-index: 10;left:10rem;">平移按鈕</button>
+	  </div>
       <button id="highlightBtn" style="position: absolute; top: 50px; left: 10px; z-index: 10;display:none">閃爍心理學類</button>
     </div>
     
@@ -54,7 +57,7 @@
       <div class="info-panel-section info-interest">
         <h2 class="info-panel-title">你的興趣傾向：</h2>
         <div class="info-panel-card">
-          <p>依據測驗結果，你的興趣特質傾向<b class="text-secondary">重視人際互動、遵守規矩與制度。</b></p>
+          <p>依據測驗結果，你的興趣特質傾向<b class="text-primary bg-alpha-tertiary">重視人際互動、遵守規矩與制度</b>。</p>
         </div>
       </div>
       <div class="info-panel-section info-academic">
@@ -63,8 +66,8 @@
           <!--<div style="margin-bottom: 10px;">
             <div style="cursor: pointer; font-weight: bold; color: rgb(51, 102, 204); margin-bottom: 4px;">1. 中國語文學類</div>
             <ul style="margin-left: 20px; display: none;">
-              <li> 中國語文學系</li>
-              <li> 華語文學系</li>
+			  <li><a href="" target="_blank">中國語文學系</a></li>
+              <li><a href="" target="_blank">華語文學系</a></li>
             </ul>
           </div>
           <div style="margin-bottom: 10px;">
@@ -407,11 +410,9 @@
             </datalist>
             <button class="btn btn-light" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
           </div>
+          <div class="info-panel-btn"><button class="btn btn-light" type="button" id="btnClearSearch">清除</button></div>
         </h2>
         <div id="resultdiv"> </div>
-        <div class="info-panel-btn">
-          <button class="btn btn-light" type="button" id="btnClearSearch">清除</button>
-        </div>
       </div>
     </div>
   </div>
@@ -421,76 +422,70 @@
 <script>
         console.log("開始讀取");
         const rawData = [
-            { cat: '中國語文學類', dept: '中國語文學系', catintro:'中國語文學類主要研究中國語言和文學，包括古代和現代的語言結構、文學作品、文化背景及其演變。學生將學習如何分析和理解中國文學作品，並探討其在不同歷史時期的社會和文化意義。' },
-            { cat: '中國語文學類', dept: '華語文學系', catintro: '中國語文學類主要研究中國語言和文學，包括古代和現代的語言結構、文學作品、文化背景及其演變。學生將學習如何分析和理解中國文學作品，並探討其在不同歷史時期的社會和文化意義。' },
-            { cat: '國際事務學類', dept: '國際事務學系', catintro: '國際事務學類主要研究國際關係、全球政治經濟、外交政策及國際組織等議題。學生將學習如何分析和解決跨國界的問題，並理解不同國家之間的互動和影響。' },
-            { cat: '一般大眾傳播學類', dept: '大眾傳播學系', catintro: '大眾傳播學類主要研究如何透過各種媒體（例如：電視、廣播、報紙、網路等）進行訊息傳遞和交流。這個學類涵蓋了新聞學、廣告學、公共關係、數位媒體等多個領域，旨在培養學生具備媒體製作、內容創作、廣告營銷及策略溝通等能力。' },
-            { cat: '一般大眾傳播學類', dept: '傳播管理學系', catintro: '大眾傳播學類主要研究如何透過各種媒體（例如：電視、廣播、報紙、網路等）進行訊息傳遞和交流。這個學類涵蓋了新聞學、廣告學、公共關係、數位媒體等多個領域，旨在培養學生具備媒體製作、內容創作、廣告營銷及策略溝通等能力。' },
-            { cat: '一般大眾傳播學類', dept: '運動資訊傳播學系', catintro: '大眾傳播學類主要研究如何透過各種媒體（例如：電視、廣播、報紙、網路等）進行訊息傳遞和交流。這個學類涵蓋了新聞學、廣告學、公共關係、數位媒體等多個領域，旨在培養學生具備媒體製作、內容創作、廣告營銷及策略溝通等能力。' },
-            { cat: '圖書資訊檔案學類', dept: '圖書資訊學系', catintro: '圖書資訊檔案學類主要研究如何有效地管理、組織和檢索各種形式的資訊，包括書籍、期刊、電子資源和檔案。這個學類涵蓋了圖書館學、資訊科學和檔案管理等領域，旨在培養學生具備資訊組織、管理和服務的專業能力。' },
-            { cat: '企業管理學類', dept: '企業管理學系', catintro: '企業管理學類主要研究如何有效地經營和管理一個組織或企業。這個學類涵蓋了多種管理領域，包括人力資源管理、財務管理、行銷管理、策略管理等。學生將學習如何制定計劃、組織資源、領導團隊以及控制和評估企業運作。' },
-            { cat: '企業管理學類', dept: '國際企業學系', catintro: '企業管理學類主要研究如何有效地經營和管理一個組織或企業。這個學類涵蓋了多種管理領域，包括人力資源管理、財務管理、行銷管理、策略管理等。學生將學習如何制定計劃、組織資源、領導團隊以及控制和評估企業運作。' },
-            { cat: '企業管理學類', dept: '管理科學學系', catintro: '企業管理學類主要研究如何有效地經營和管理一個組織或企業。這個學類涵蓋了多種管理領域，包括人力資源管理、財務管理、行銷管理、策略管理等。學生將學習如何制定計劃、組織資源、領導團隊以及控制和評估企業運作。' },
-            { cat: '企業管理學類', dept: '科技管理學系', catintro: '企業管理學類主要研究如何有效地經營和管理一個組織或企業。這個學類涵蓋了多種管理領域，包括人力資源管理、財務管理、行銷管理、策略管理等。學生將學習如何制定計劃、組織資源、領導團隊以及控制和評估企業運作。' },
-            { cat: '貿易學類', dept: '國際貿易學系', catintro: '貿易學類主要研究國際貿易理論與實務，涵蓋進出口業務、國際市場分析、貿易法規、物流管理等領域。學生將學習如何在全球市場中進行貿易活動，並了解不同國家的貿易政策和文化差異，以便有效地進行跨國交易。' },
-            { cat: '都巿規劃學類', dept: '都巿規劃學系', catintro: '都市規劃學類主要研究如何有效地利用土地資源，設計和管理城市空間，以滿足居民的生活需求。這個學類涵蓋了從城市設計、交通規劃到環境保護等多方面的內容，目的是創造一個功能完善、環境友好且永續發展的城市。' },
-            { cat: '老年服務學類', dept: '長期照護與管理學系', catintro: '老年服務學類主要研究如何提供高品質的服務與支持給老年人，涵蓋健康照護、心理支持、社會參與等多方面。這個學類旨在培養學生具備專業知識和技能，以應對老年人口日益增長所帶來的挑戰。' },
-            { cat: '老年服務學類', dept: '高齡健康照護學系', catintro: '老年服務學類主要研究如何提供高品質的服務與支持給老年人，涵蓋健康照護、心理支持、社會參與等多方面。這個學類旨在培養學生具備專業知識和技能，以應對老年人口日益增長所帶來的挑戰。' },
-            { cat: '老年服務學類', dept: '老人服務事業管理學系', catintro: '老年服務學類主要研究如何提供高品質的服務與支持給老年人，涵蓋健康照護、心理支持、社會參與等多方面。這個學類旨在培養學生具備專業知識和技能，以應對老年人口日益增長所帶來的挑戰。' },
-            { cat: '兒童保育學類', dept: '兒童保育學系', catintro: '兒童保育學類主要研究和實踐如何照顧、教育和支持兒童的全面發展。這個學類涵蓋了從嬰幼兒到學齡前兒童的各種需求，包括身體、情感、社會和智力發展。學生將學習如何設計和實施適合不同年齡段兒童的教育和保育計劃。' },
-            { cat: '兒童保育學類', dept: '家庭與兒童發展學系', catintro: '兒童保育學類主要研究和實踐如何照顧、教育和支持兒童的全面發展。這個學類涵蓋了從嬰幼兒到學齡前兒童的各種需求，包括身體、情感、社會和智力發展。學生將學習如何設計和實施適合不同年齡段兒童的教育和保育計劃。' },
-            { cat: '觀光休閒學類', dept: '觀光休閒學系', catintro: '觀光休閒學類主要研究如何規劃、管理和推廣觀光與休閒活動。這個學類涵蓋了旅遊經濟學、國際觀光、市場行銷、文化資源管理等領域，目的是培養學生在這些領域的專業知識和實務技能。' },
-            { cat: '觀光休閒學類', dept: '觀光休閒管理學系', catintro: '觀光休閒學類主要研究如何規劃、管理和推廣觀光與休閒活動。這個學類涵蓋了旅遊經濟學、國際觀光、市場行銷、文化資源管理等領域，目的是培養學生在這些領域的專業知識和實務技能。' },
-            { cat: '觀光休閒學類', dept: '休閒遊憩學系', catintro: '觀光休閒學類主要研究如何規劃、管理和推廣觀光與休閒活動。這個學類涵蓋了旅遊經濟學、國際觀光、市場行銷、文化資源管理等領域，目的是培養學生在這些領域的專業知識和實務技能。' }
+            { cat: '中國語文學類', dept: '中國語文學系',csn:'48', catintro:'中國語文學類主要研究中國語言和文學，包括古代和現代的語言結構、文學作品、文化背景及其演變。學生將學習如何分析和理解中國文學作品，並探討其在不同歷史時期的社會和文化意義。' },
+            { cat: '中國語文學類', dept: '華語文學系', csn: '49', catintro: '中國語文學類主要研究中國語言和文學，包括古代和現代的語言結構、文學作品、文化背景及其演變。學生將學習如何分析和理解中國文學作品，並探討其在不同歷史時期的社會和文化意義。' },
+            { cat: '國際事務學類', dept: '國際事務學系', csn: '80', catintro: '國際事務學類主要研究國際關係、全球政治經濟、外交政策及國際組織等議題。學生將學習如何分析和解決跨國界的問題，並理解不同國家之間的互動和影響。' },
+            { cat: '一般大眾傳播學類', dept: '大眾傳播學系', csn: '86', catintro: '大眾傳播學類主要研究如何透過各種媒體（例如：電視、廣播、報紙、網路等）進行訊息傳遞和交流。這個學類涵蓋了新聞學、廣告學、公共關係、數位媒體等多個領域，旨在培養學生具備媒體製作、內容創作、廣告營銷及策略溝通等能力。' },
+            { cat: '一般大眾傳播學類', dept: '傳播管理學系', csn: '87', catintro: '大眾傳播學類主要研究如何透過各種媒體（例如：電視、廣播、報紙、網路等）進行訊息傳遞和交流。這個學類涵蓋了新聞學、廣告學、公共關係、數位媒體等多個領域，旨在培養學生具備媒體製作、內容創作、廣告營銷及策略溝通等能力。' },
+            { cat: '一般大眾傳播學類', dept: '運動資訊傳播學系', csn: '88', catintro: '大眾傳播學類主要研究如何透過各種媒體（例如：電視、廣播、報紙、網路等）進行訊息傳遞和交流。這個學類涵蓋了新聞學、廣告學、公共關係、數位媒體等多個領域，旨在培養學生具備媒體製作、內容創作、廣告營銷及策略溝通等能力。' },
+            { cat: '圖書資訊檔案學類', dept: '圖書資訊學系', csn: '92', catintro: '圖書資訊檔案學類主要研究如何有效地管理、組織和檢索各種形式的資訊，包括書籍、期刊、電子資源和檔案。這個學類涵蓋了圖書館學、資訊科學和檔案管理等領域，旨在培養學生具備資訊組織、管理和服務的專業能力。' },
+            { cat: '企業管理學類', dept: '企業管理學系', csn: '107', catintro: '企業管理學類主要研究如何有效地經營和管理一個組織或企業。這個學類涵蓋了多種管理領域，包括人力資源管理、財務管理、行銷管理、策略管理等。學生將學習如何制定計劃、組織資源、領導團隊以及控制和評估企業運作。' },
+            { cat: '企業管理學類', dept: '國際企業學系', csn: '108', catintro: '企業管理學類主要研究如何有效地經營和管理一個組織或企業。這個學類涵蓋了多種管理領域，包括人力資源管理、財務管理、行銷管理、策略管理等。學生將學習如何制定計劃、組織資源、領導團隊以及控制和評估企業運作。' },
+            { cat: '企業管理學類', dept: '管理科學學系', csn: '109', catintro: '企業管理學類主要研究如何有效地經營和管理一個組織或企業。這個學類涵蓋了多種管理領域，包括人力資源管理、財務管理、行銷管理、策略管理等。學生將學習如何制定計劃、組織資源、領導團隊以及控制和評估企業運作。' },
+            { cat: '企業管理學類', dept: '科技管理學系', csn: '110', catintro: '企業管理學類主要研究如何有效地經營和管理一個組織或企業。這個學類涵蓋了多種管理領域，包括人力資源管理、財務管理、行銷管理、策略管理等。學生將學習如何制定計劃、組織資源、領導團隊以及控制和評估企業運作。' },
+            { cat: '貿易學類', dept: '國際貿易學系', csn: '112', catintro: '貿易學類主要研究國際貿易理論與實務，涵蓋進出口業務、國際市場分析、貿易法規、物流管理等領域。學生將學習如何在全球市場中進行貿易活動，並了解不同國家的貿易政策和文化差異，以便有效地進行跨國交易。' },
+            { cat: '都巿規劃學類', dept: '都巿規劃學系', csn: '168', catintro: '都市規劃學類主要研究如何有效地利用土地資源，設計和管理城市空間，以滿足居民的生活需求。這個學類涵蓋了從城市設計、交通規劃到環境保護等多方面的內容，目的是創造一個功能完善、環境友好且永續發展的城市。' },
+            { cat: '老年服務學類', dept: '長期照護與管理學系', csn: '211', catintro: '老年服務學類主要研究如何提供高品質的服務與支持給老年人，涵蓋健康照護、心理支持、社會參與等多方面。這個學類旨在培養學生具備專業知識和技能，以應對老年人口日益增長所帶來的挑戰。' },
+            { cat: '老年服務學類', dept: '高齡健康照護學系', csn: '212', catintro: '老年服務學類主要研究如何提供高品質的服務與支持給老年人，涵蓋健康照護、心理支持、社會參與等多方面。這個學類旨在培養學生具備專業知識和技能，以應對老年人口日益增長所帶來的挑戰。' },
+            { cat: '老年服務學類', dept: '老人服務事業管理學系', csn: '213', catintro: '老年服務學類主要研究如何提供高品質的服務與支持給老年人，涵蓋健康照護、心理支持、社會參與等多方面。這個學類旨在培養學生具備專業知識和技能，以應對老年人口日益增長所帶來的挑戰。' },
+            { cat: '兒童保育學類', dept: '兒童保育學系', csn: '216', catintro: '兒童保育學類主要研究和實踐如何照顧、教育和支持兒童的全面發展。這個學類涵蓋了從嬰幼兒到學齡前兒童的各種需求，包括身體、情感、社會和智力發展。學生將學習如何設計和實施適合不同年齡段兒童的教育和保育計劃。' },
+            { cat: '兒童保育學類', dept: '家庭與兒童發展學系', csn: '217', catintro: '兒童保育學類主要研究和實踐如何照顧、教育和支持兒童的全面發展。這個學類涵蓋了從嬰幼兒到學齡前兒童的各種需求，包括身體、情感、社會和智力發展。學生將學習如何設計和實施適合不同年齡段兒童的教育和保育計劃。' },
+            { cat: '觀光休閒學類', dept: '觀光休閒學系', csn: '222', catintro: '觀光休閒學類主要研究如何規劃、管理和推廣觀光與休閒活動。這個學類涵蓋了旅遊經濟學、國際觀光、市場行銷、文化資源管理等領域，目的是培養學生在這些領域的專業知識和實務技能。' },
+            { cat: '觀光休閒學類', dept: '觀光休閒管理學系', csn: '223', catintro: '觀光休閒學類主要研究如何規劃、管理和推廣觀光與休閒活動。這個學類涵蓋了旅遊經濟學、國際觀光、市場行銷、文化資源管理等領域，目的是培養學生在這些領域的專業知識和實務技能。' },
+            { cat: '觀光休閒學類', dept: '休閒遊憩學系', csn: '250', catintro: '觀光休閒學類主要研究如何規劃、管理和推廣觀光與休閒活動。這個學類涵蓋了旅遊經濟學、國際觀光、市場行銷、文化資源管理等領域，目的是培養學生在這些領域的專業知識和實務技能。' }
         ];
 
         const grouped = {};
         rawData.forEach(item => {
             if (!grouped[item.cat]) grouped[item.cat] = [];
-            grouped[item.cat].push(item.dept);
+            //grouped[item.cat].push(item.dept);
+            grouped[item.cat].push(item); // ⬅️ push 整個 item，而非只有 item.dept
         });
 
         const treeDiv = document.getElementById("treeMenu");
         let index = 1;
         // 建立 tooltip 容器
         const tooltip = document.createElement("div");
-	    tooltip.classList.add("tooltip");
-        //tooltip.style.position = "absolute";
-        //tooltip.style.padding = "8px";
-        //tooltip.style.background = "#15A83D";
-        //tooltip.style.border = "0";
-        //tooltip.style.borderRadius = "5px";
-        //tooltip.style.boxShadow = "0 3px 6px rgba(0,0,0,0.15)";
-        //tooltip.style.maxWidth = "280px";
-        //tooltip.style.fontSize = "14px";
-	    //tooltip.style.color= "#ffffff";
-        //tooltip.style.lineHeight = "1.5";
-        //tooltip.style.display = "none";
-        //tooltip.style.zIndex = 999;
+        tooltip.classList.add("tooltip");
+
         document.body.appendChild(tooltip);
 
         for (const cat in grouped) {
             const wrapper = document.createElement("div");
-			wrapper.classList.add("tree-menu-div");
+            wrapper.classList.add("tree-menu-div");
             //wrapper.style.marginBottom = "10px";
 
             const catTitle = document.createElement("div");
             catTitle.innerHTML = `${index}. <span>${cat}</span>`;
-			catTitle.classList.add("tree-menu-title");
-            //catTitle.style.cursor = "pointer";
-            //catTitle.style.fontWeight = "bold";
-            //catTitle.style.color = "#3366cc";
-            //catTitle.style.marginBottom = "4px";
+            catTitle.classList.add("tree-menu-title");
 
             const ul = document.createElement("ul");
-			ul.classList.add("tree-menu-ul");
-			ul.style.display = "none";
-            //ul.style.marginLeft = "20px";
+            ul.classList.add("tree-menu-ul");
+            ul.style.display = "none";
 
-            grouped[cat].forEach((dept, i) => {
+            grouped[cat].forEach((item, i) => {
                 const li = document.createElement("li");
-                li.textContent = ` ${dept}`;
+               // li.textContent = ` ${dept}`;
+                // ul.appendChild(li);
+
+                const link = document.createElement("a");
+                link.href = `explore3.aspx?dept=${encodeURIComponent(item.csn)}`;
+                link.textContent = item.dept;
+                link.target = "_blank"; // 開新視窗/分頁
+
+                li.appendChild(link);
                 ul.appendChild(li);
+
             });
 
             // 顯示 tooltip
@@ -527,55 +522,7 @@
             treeDiv.appendChild(wrapper);
             index++;
         }
-        //for (const cat in grouped) {
-        //    const wrapper = document.createElement("div");
-        //    wrapper.style.marginBottom = "10px";
-
-        //    const catTitle = document.createElement("div");
-        //    catTitle.textContent = `${index}. ${cat}`;
-        //    catTitle.style.cursor = "pointer";
-        //    catTitle.style.fontWeight = "bold";
-        //    catTitle.style.color = "#3366cc";
-        //    catTitle.style.marginBottom = "4px";
-
-        //    //const ul = document.createElement("ul");
-        //    //ul.style.marginLeft = "20px";
-        //    //ul.style.display = "none"; // ✅ 預設收合
-
-        //    //grouped[cat].forEach((dept, i) => {
-        //    //    const li = document.createElement("li");
-        //    //    li.textContent = ` ${dept}`;
-        //    //    ul.appendChild(li);
-        //    //});
-        //    // 加入滑鼠提示文字
-        //    const catIntro = rawData.find(item => item.cat === cat)?.catintro || "";
-        //    catTitle.title = catIntro;
-
-        //    const ul = document.createElement("ul");
-        //    ul.style.marginLeft = "20px";
-        //    ul.style.display = "none";
-
-        //    grouped[cat].forEach((dept, i) => {
-        //        const li = document.createElement("li");
-        //        li.textContent = ` ${dept}`;
-        //        ul.appendChild(li);
-        //    });
-
-        //    // ✅ 點擊類別名稱：閃爍並收合/展開
-        //    catTitle.addEventListener("click", function () {
-        //        const isHidden = ul.style.display === "none";
-        //        ul.style.display = isHidden ? "block" : "none";
-        //        if (isHidden) {
-        //            // 展開時才執行閃爍
-        //            highlightPointsByNamePart(cat);
-        //        }
-        //    });
-
-        //    wrapper.appendChild(catTitle);
-        //    wrapper.appendChild(ul);
-        //    treeDiv.appendChild(wrapper);
-        //    index++;
-        //}
+     
 
         // === 🔔 依名稱片段搜尋並閃爍所有符合的點 ===
         function highlightPointsByNamePart(keyword) {
@@ -647,12 +594,16 @@
             }
         });
 
+        document.getElementById("btnClearSearch").style.display = "none";
+
 
 
         document.getElementById("btnClearSearch").addEventListener("click", function () {
             // 清除搜尋欄位與結果文字
             document.getElementById("Searchdeptstr").value = "";
             document.getElementById("resultdiv").innerHTML = "";
+
+            document.getElementById("btnClearSearch").style.display = "none";
 
             // 定義學類名稱與對應顏色
             const colorMap = {
@@ -691,6 +642,7 @@
         }
         // 點擊搜尋後觸發
         document.getElementById("button-addon2").addEventListener("click", function () {
+
             const inputStr = document.getElementById("Searchdeptstr").value.trim();
             if (!inputStr) return;
 
@@ -699,32 +651,11 @@
             const resultDiv = document.getElementById("resultdiv");
 
             if (matched.length === 0) {
-                resultDiv.innerHTML = `<div class="info-panel-card">查無與<big class="strong text-secondary">${inputStr}</big>相關的學系資料。</div>`;
+                resultDiv.innerHTML = `查無與「${inputStr}」相關的學系資料。`;
                 return;
             }
 
-            // 收集對應的 bcont 去除重複
-            //const resultSet = new Set();
-            //matched.forEach(item => resultSet.add(item.bcont));
-
-            // 去除重複 bcont（學類）
-            //const resultSet = new Set();
-            //matched.forEach(item => resultSet.add(item.bcont));
-            //const resultText = Array.from(resultSet).join(" / ");
-
-
-            // 輸出結果
-
-            // 顯示輸出文字
-  //          resultDiv.innerHTML = `
-  //  「<strong>${inputStr}</strong>」科系分類在 <strong>${resultText}</strong> ，
-  //  此學類與你特質的適配度為 <strong>AA</strong>。
-  //`;
-            //const resultText = Array.from(resultSet).join(" / ");
-
-
-
-            // alert("對應的學類為：\n" + resultText);
+            document.getElementById("btnClearSearch").style.display = "inline-block";
 
 
 
@@ -743,16 +674,14 @@
          //   resultDiv.innerHTML = `「<strong>${inputStr}</strong>」科系分類在 <strong>${resultText}</strong> 學類，此學類與你特質的適配度為 <strong>AA</strong>。`;
             if (resultList.length === 1) {
                 // ✅ 單一學類：正常輸出
-                resultDiv.innerHTML = `
-               <div class="info-panel-card">
-                 <big class="strong text-secondary">${inputStr}</big>科系分類在 
-                  <strong>${resultList[0]}</strong>，此學類與你特質的適配度為 <strong>AA</strong>。
-                  <br/><br/><small class="text-primary">* 適配度為50以上建議優先探索</small>
-	           </div>
+                resultDiv.innerHTML = `<div class="info-panel-card">
+        「<strong>${inputStr}</strong>」科系分類在 
+        <strong>${resultList[0]}</strong> ，此學類與你特質的適配度為 <strong>AA</strong>。
+           <br/>（適配度為50以上建議優先探索） </div>
     `;
             } else {
                 //  多學類輸出，僅列前 10 筆
-                let html = `<div class="info-panel-card"><big class="strong text-secondary">${inputStr}</big>科系分類在：<br/>`;
+                let html = `<div class="info-panel-card">「<strong>${inputStr}</strong>」科系分類在：<br/>`;
 
                 const displayLimit = 10;
                 const limitedList = resultList.slice(0, displayLimit);
@@ -764,7 +693,7 @@
                 if (resultList.length > displayLimit) {
                     html += `...等共 <strong>${resultList.length}</strong> 類。`;
                 }
-                html += `<br/><small class="text-primary">以上學類的適配度若為50以上建議優先探索。</small></div>`;
+                html += `<br/>以上學類的適配度若為50以上建議優先探索。 </div>`;
                 resultDiv.innerHTML = html;
             }
 
@@ -854,9 +783,9 @@
                 }
 
                 // 添加座標與標籤到對應顏色的組中
-                colorGroups[mappedColor].x.push(parseFloat(row.x));
-                colorGroups[mappedColor].y.push(parseFloat(row.y));
-                colorGroups[mappedColor].z.push(parseFloat(row.z));
+                colorGroups[mappedColor].x.push(parseFloat(row.x)); // +0.0838
+                colorGroups[mappedColor].y.push(parseFloat(row.y));//  +0.904 
+                colorGroups[mappedColor].z.push(parseFloat(row.z));// +0.305 
                 colorGroups[mappedColor].text.push(row.cname);
                 colorGroups[mappedColor].links.push(row.link);
             });
@@ -904,68 +833,22 @@
                     size: 4,
                     color: 'lightgray',             // ✅ 淺灰色
                     opacity: 0.8
-                }, name: '空間軸標示',
+                }, name: '空間軸',
                 showlegend: true,                   // ✅ 顯示圖例
-                legendgroup: 'axes'                 // ✅ 可加這行避免重複
+                legendgroup: 'axes'                
             });
 
 
 
-            // 佈局配置
-            //var layout = {
-            //    legend: {
-            //        x: 1.05,   // 超出圖表右邊
-            //        y: 0.5,
-            //        xanchor: 'left',
-            //        orientation: 'v'
-            //    },
-            //    margin: {
-            //        l: 0,
-            //        r: 0,
-            //        b: 0,
-            //        t: 0
-            //    },
-            //    scene: {
-            //        xaxis: {
-            //            title: {
-            //                text: 'X 軸',
-            //                font: { size: 14 }
-            //            },
-            //            tickfont: {
-            //                color: 'rgba(128, 128, 128, 0.7)', // 灰色且透明
-            //                size: 12
-            //            }
-            //        },
-            //        yaxis: {
-            //            title: {
-            //                text: 'Y 軸',
-            //                font: { size: 14 }
-            //            },
-            //            tickfont: {
-            //                color: 'rgba(128, 128, 128, 0.7)', // 灰色且透明
-            //                size: 12
-            //            }
-            //        },
-            //        zaxis: {
-            //            title: {
-            //                text: 'Z 軸',
-            //                font: { size: 14 }
-            //            },
-            //            tickfont: {
-            //                color: 'rgba(128, 128, 128, 0.7)', // 灰色且透明
-            //                size: 12
-            //            }
-            //        },
-            //        camera: {
-            //            eye: { x: 0.2838, y: -1.104, z: 0.305 }//,    up: { x: 0, y: 0, z:1 }
-            //        }
-            //    }
-            //};
+
+
+
             function generateSphereWireframe(radius, step) {
                 const lines = [];
                 const phiStep = step;
                 const thetaStep = step;
 
+                // 緯線（水平圈）
                 for (let phi = 0; phi <= Math.PI; phi += phiStep) {
                     const x = [], y = [], z = [];
                     for (let theta = 0; theta <= 2 * Math.PI; theta += thetaStep) {
@@ -977,12 +860,13 @@
                         type: 'scatter3d',
                         mode: 'lines',
                         x, y, z,
-                        line: { color: 'lightgray', width: 1 },
+                        line: { color: 'white', width: 1 },
                         hoverinfo: 'skip',
                         showlegend: false
                     });
                 }
 
+                // 經線（縱向圈）
                 for (let theta = 0; theta <= Math.PI; theta += thetaStep) {
                     const x = [], y = [], z = [];
                     for (let phi = 0; phi <= Math.PI; phi += phiStep) {
@@ -990,86 +874,195 @@
                         y.push(radius * Math.sin(phi) * Math.sin(theta));
                         z.push(radius * Math.cos(phi));
                     }
+
                     lines.push({
                         type: 'scatter3d',
                         mode: 'lines',
                         x, y, z,
-                        line: { color: 'lightgray', width: 1 },
+                        line: { color: 'white', width: 1 },
                         hoverinfo: 'skip',
                         showlegend: false
                     });
                 }
 
+                // ✅ 強制加入 X/Y/Z 軸主線（加粗）
+                const mainAxes = [
+                    { x: [-radius, radius], y: [0, 0], z: [0, 0] }, // X 軸
+                    { x: [0, 0], y: [-radius, radius], z: [0, 0] }, // Y 軸
+                    { x: [0, 0], y: [0, 0], z: [-radius, radius] }  // Z 軸
+                ];
+
+                mainAxes.forEach(axis => {
+                    lines.push({
+                        type: 'scatter3d',
+                        mode: 'lines',
+                        x: axis.x,
+                        y: axis.y,
+                        z: axis.z,
+                        line: {
+                            color: 'white',
+                            width: 4             // 主軸加粗
+                        },
+                        hoverinfo: 'skip',
+                        showlegend: false
+                    });
+                });
+
                 return lines;
             }
 
-            // 加入外圍光暈星點效果
-            function generateOuterGlowPoints(numPoints, minR, maxR) {
-                const x = [], y = [], z = [];
-                for (let i = 0; i < numPoints; i++) {
-                    const theta = Math.random() * 2 * Math.PI;
-                    const phi = Math.acos(2 * Math.random() - 1);
-                    const r = minR + Math.random() * (maxR - minR);
-                    x.push(r * Math.sin(phi) * Math.cos(theta));
-                    y.push(r * Math.sin(phi) * Math.sin(theta));
-                    z.push(r * Math.cos(phi));
-                }
-                return [{
-                    type: 'scatter3d',
-                    mode: 'markers',
-                    x, y, z,
-                    marker: {
-                        size: 6,
-                        color: 'rgba(255, 100, 255, 0.7)',
-                        opacity: 0.3
-                    },
-                    hoverinfo: 'skip',
-                    showlegend: false
-                }];
-            }
+
+			const isNarrowScreen = window.innerWidth < 720;  
+
+
+
 
 
             console.log("開始畫圖");
-            const loadingDiv = document.getElementById("loadingMessage");
-            loadingDiv.style.display = "block"; // ✅ 顯示載入提示
-            // 在網頁上繪製圖形
-            // Plotly.newPlot('myDiv', plotData, layout);
-            Plotly.newPlot('myDiv', [
-                ...plotData,
-                ...generateSphereWireframe(2.2, 0.2)
-            ], {
-                scene: {
-                    xaxis: { visible: false },
-                    yaxis: { visible: false },
-                    zaxis: { visible: false },
-                    bgcolor: 'rgba(255,255,255,1)',
-                    camera: { eye: { x: 0.8, y: 0.8, z: 0.8 } }
-                },
-                paper_bgcolor: 'white',
-                plot_bgcolor: 'white',
-                margin: { l: 0, r: 0, b: 0, t: 0 },
-                legend: {
-                    x: 1.05,
-                    y: 0.5,
-                    xanchor: 'left',
-                    orientation: 'v'
-                }
-            });
 
+
+            let isMoved = false; // 記錄是否已平移
+            let originalTraces = []; // 儲存原始 trace 資料備份
+            // 建立深層拷貝的備份資料（不會被改動）
+            originalTraces = plotData.map(trace => ({
+                ...trace,
+                x: [...trace.x],
+                y: [...trace.y],
+                z: [...trace.z]
+            }));
+
+
+
+            // 初次繪圖
+            drawPlot();
+
+            // 監聽視窗變更，調整 legend
+            window.addEventListener('resize', () => {
+                const newLegend = getResponsiveLegendLayout();
+                Plotly.relayout('myDiv', {
+                    'legend.x': newLegend.x,
+                    'legend.y': newLegend.y,
+                    'legend.xanchor': newLegend.xanchor,
+                    'legend.yanchor': newLegend.yanchor,
+                    'legend.orientation': newLegend.orientation
+                });
+            });
 
             console.log("結束畫圖");
 
+            document.getElementById("moveBtn").addEventListener("click", function () {
+                // 定義本人座標 (要作為位移基準點)
+                const baseX = -0.0838;
+                const baseY = -0.904;
+                const baseZ = -0.305;
 
-            loadingDiv.style.display = "none";
+                // 切換狀態
+                isMoved = !isMoved;
 
-            document.getElementById('myDiv').on('plotly_click', function (data) {
-                var point = data.points[0]; // 只處理第一個點（一般點一個點即可）
-                var name = point.text; // cname 對應的值
-                console.log("你點擊了座標名稱：" + name);
+                myDiv.data.forEach((trace, index) => {
+                    // 僅平移「學類點」的 trace，排除球面線條與標示軸
+                    if (trace.mode === 'markers+text' && trace.type === 'scatter3d' && trace.x && trace.x.length > 0) {
+                        const orig = originalTraces[index];
+                        if (!orig) return;  // 防止 undefined
 
+                        const newX = isMoved
+                            ? orig.x.map(x => x - baseX)
+                            : [...orig.x];
+                        const newY = isMoved
+                            ? orig.y.map(y => y - baseY)
+                            : [...orig.y];
+                        const newZ = isMoved
+                            ? orig.z.map(z => z - baseZ)
+                            : [...orig.z];
 
+                        Plotly.restyle('myDiv', {
+                            x: [newX],
+                            y: [newY],
+                            z: [newZ]
+                        }, [index]);
+                    }
+                    // ✅ 空間軸隱藏或顯示
+                    if (trace.name === '空間軸') {
+                        Plotly.restyle('myDiv', {
+                            visible: isMoved ? false : true
+                        }, [index]);
+                    }
+                });
+
+                this.textContent = isMoved ? "回復位置" : "平移按鈕";
+				if (isMoved) {
+				  this.classList.add("active");
+				} else {
+				  this.classList.remove("active");
+				}
 
             });
+
+
+
+            function getResponsiveLegendLayout() {
+                const isNarrowScreen = window.innerWidth < 768;
+                return isNarrowScreen
+                    ? {
+                        x: 0.5,
+                        y: 0,
+                        xanchor: 'center',
+                        yanchor: 'bottom',
+                        orientation: 'h',  // ✅ 橫向排列
+                        font: {
+                            size: 14,
+                            family: 'Microsoft JhengHei, sans-serif',
+                            color: '#333'
+                        },
+                        itemsizing: 'constant',
+                        itemclick: 'toggle',
+                        itemdoubleclick: false
+                    }
+                    : {
+                        x: 1.1,
+                        y: 0.1,
+                        xanchor: 'right',
+                        yanchor: 'bottom',
+                        orientation: 'v',  // ✅ 垂直排列
+                        font: {
+                            size: 16,
+                            family: 'Microsoft JhengHei, sans-serif',
+                            color: '#333'
+                        },
+                        itemsizing: 'constant',
+                        itemclick: 'toggle',
+                        itemdoubleclick: false
+                    };
+            }
+
+            function drawPlot() {
+                document.getElementById("loadingMessage").style.display = "block";
+
+                setTimeout(() => {
+                    Plotly.newPlot('myDiv', [
+                        ...plotData,
+                        ...generateSphereWireframe(2.2, 0.2)
+                    ], {
+                        scene: {
+                            xaxis: { visible: false },
+                            yaxis: { visible: false },
+                            zaxis: { visible: false },
+                            bgcolor: 'rgba(0,0,0,0)',
+                            camera: { eye: { x: 0.8, y: 0.8, z: 0.8 } }
+                        },
+                        paper_bgcolor: 'rgba(0,0,0,0)',
+                        plot_bgcolor: 'rgba(0,0,0,0)',
+                        margin: { l: 0, r: 0, b: 0, t: 0 },
+                        legend: getResponsiveLegendLayout()
+                    }, {
+                        responsive: true 
+                    }).then(() => {
+                        document.getElementById("loadingMessage").style.display = "none";
+                    });
+                }, 200);
+            }
+
+
 
             // 自動旋轉控制
             var rotating = false;
@@ -1104,19 +1097,19 @@
                 if (rotating) {
                     stopRotation();
                     this.textContent = '旋轉展示';
-					this.classList.remove('rotating');
+					this.classList.remove('active');
                 } else {
                     startRotation();
                     this.textContent = '暫停旋轉';
-					this.classList.add('rotating');
+					this.classList.add('active');
                 }
             });
 
             // 點擊按鈕後，強調特定點
-            document.getElementById('highlightBtn').addEventListener('click', function () {
+          //  document.getElementById('highlightBtn').addEventListener('click', function () {
                 //highlightPoint(0, 11); // 這裡可以改成你想要強調的 trace 與點 index
-                blinkPoint(0, 11, 5, 200);
-            });
+              //  blinkPoint(0, 11, 5, 200);
+            //});
 
             // 定義函式：將指定 trace 的指定點改為大紅色
             function highlightPoint(traceIndex, pointIndex) {
@@ -1157,9 +1150,6 @@
                 const originalSize = sizeArray[pointIndex];
                 const originalColor = colorArray[pointIndex];
 
-                console.log("sizeArray", sizeArray);
-                console.log("originalSize", originalSize);
-
                 let count = 0;
                 let visible = false;
 
@@ -1190,7 +1180,7 @@
 
 
         });
-    </script> 
+    </script>
 <!--<div style="position: absolute; padding: 8px; background: rgb(249, 249, 249); border: 1px solid rgb(204, 204, 204); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px; max-width: 250px; font-size: 13px; line-height: 1.5; display: none; z-index: 999; left: 1712px; top: 717px;">觀光休閒學類主要研究如何規劃、管理和推廣觀光與休閒活動。這個學類涵蓋了旅遊經濟學、國際觀光、市場行銷、文化資源管理等領域，目的是培養學生在這些領域的專業知識和實務技能。</div>-->
 <svg id="js-plotly-tester" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute; left: -10000px; top: -10000px; width: 9000px; height: 9000px; z-index: 1;">
   <path class="js-reference-point" d="M0,0H1V1H0Z" style="stroke-width: 0; fill: black;"></path>
