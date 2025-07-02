@@ -89,6 +89,8 @@ small, .small { font-size: .9em; }
 .info-panel-card p { margin-top: 0; margin-bottom: .75rem; }
 .info-panel-card p:last-child { margin-bottom: 0; }
 
+.info-interest .info-panel-card b { font-weight: 500; font-size: .95rem; }
+
 .info-search .info-panel-title { flex-direction: row; }
 .info-search .info-panel-title .info-panel-btn { margin-left: .75rem; }
 .info-search .info-panel-title .info-panel-btn .btn { font-size: 1rem; }
