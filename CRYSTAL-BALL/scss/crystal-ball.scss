@@ -10,6 +10,17 @@ $green: #008080;
 $yellow: #FFD700;
 $purple: #4B0082;
 $red: #FF0000;
+
+
+//an
+@keyframes gradientFadeIn-span {
+0% { 
+	background-size: 500% 100%;
+}
+100% { 
+	background-size: 100% 100%;
+}
+}
 	
 //template
 *{
@@ -114,28 +125,28 @@ body{
 	top: 50%; 
 	left: 50%; 
 	transform: translate(-50%, -50%); 
-	min-width: 15em;
-	max-width: 80%;
+	min-width: 15rem;
+	max-width: 98%;
 	padding: 1rem 1.25rem; 
 	border-radius: .75rem; 
 	z-index: 9999; 
-	font-size: 1.25rem;
-	font-weight: 500;
-	background-color: rgba(#fff, .35);
+	background-color: rgba(#fff, .4);
 	box-shadow: inset 0 -10px 20px rgba(#fff, .25),
  				inset 0 -5px   8px rgba(#fff, .25),		
 					  0   0    8px rgba(#000, .15),
 					  0   2px  3px rgba(#000, .15);
 	text-align: center;
-	> i{
-		margin-right: .5rem;
-		background: inherit;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: $primary;
-		background-clip: text;
-		text-fill-color: $primary;	
-		background-position: 50% 100%;
+	br{
+		display: none;
+		
 	}
+	/*> .loading-icon{
+		display: inline-block;
+		width: 1.25rem;    
+		height: auto; 
+		margin-right: .25rem;
+	}
+	
 	> span {
 		background: linear-gradient(to right, $primary 0%, $yellow 33%, $purple 67%, $red 100%);
 		-webkit-background-clip: text;
@@ -146,16 +157,45 @@ body{
 		background-size: 500% 100%;
 		background-position: left center;
 		animation: gradientFadeIn-span 3s infinite alternate;
+		
 	}
-}
-
-@keyframes gradientFadeIn-span {
-0% { 
-	background-size: 500% 100%;
-}
-100% { 
-	background-size: 100% 100%;
-}
+	> small{
+		display: block;
+		color: #333;
+		font-size: .8rem;
+		font-weight: 400;
+	}*/
+	> .loading-icon{
+		display: inline-block;
+		width: 1.75rem;    
+		height: auto; 
+		margin-right: .25rem;
+	}
+	> span {
+		display: block;
+		font-size: 1.75rem;
+		font-weight: 700;
+		letter-spacing: .15em;
+		color: $tertiary;
+		filter: drop-shadow(1px 1px $primary) drop-shadow(-1px -1px $primary) drop-shadow(-1px 1px $primary) drop-shadow(1px -1px $primary) 
+			    drop-shadow(0.15rem 0.15rem lighten($primary, 50%));
+		font-style: italic;
+	}
+	> small{
+		display: block;
+		color: #333;
+		font-size: .9rem;
+		font-weight: 400;
+		background: linear-gradient(to right, $primary 0%, $yellow 33%, $purple 67%, $red 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		text-fill-color: transparent;
+		background-position: 50% 100%;
+		background-size: 500% 100%;
+		background-position: left center;
+		animation: gradientFadeIn-span 3s infinite alternate;
+	}
 }
 
 //UI
@@ -302,10 +342,15 @@ small, .small{
 .btn-rotation{
 	&::before{
 		background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='rotation' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 16 16' style='enable-background:new 0 0 16 16;' xml:space='preserve'%3E %3Cg%3E %3Cpath d='M15.7,7h-1.6c-0.2-1.5-1-2.8-2.2-3.8C9.3,1,5.4,1.4,3.2,4c0,0,0,0,0,0C3,4.3,3,4.6,3.3,4.8S3.8,4.9,4,4.7 c1-1.2,2.4-1.9,4-1.9c2.5,0,4.6,1.7,5.1,4.1h-1.4c-0.1,0-0.1,0-0.2,0.1c-0.1,0.1-0.1,0.3,0,0.4l2,2.4c0,0,0,0,0,0 c0.1,0.1,0.3,0.1,0.4,0l2-2.4c0,0,0.1-0.1,0.1-0.2C16,7.1,15.9,7,15.7,7z'/%3E %3Cpath d='M12,11.3c-0.8,0.9-1.8,1.5-3,1.8c-2.8,0.6-5.5-1.2-6.1-4h1.4c0.1,0,0.3-0.1,0.3-0.3c0-0.1,0-0.1-0.1-0.2l-2-2.4 C2.4,6.1,2.2,6,2.1,6.1c0,0,0,0,0,0l-2,2.4C0,8.7,0,8.9,0.1,9C0.1,9,0.2,9,0.3,9h1.6c0.2,1.5,1,2.8,2.2,3.8 c2.6,2.2,6.6,1.8,8.8-0.8c0,0,0,0,0,0c0.2-0.2,0.1-0.6-0.1-0.7C12.5,11,12.2,11.1,12,11.3z'/%3E %3Cpath d='M6.3,10.6l3.8-2.2c0.1,0,0.1-0.1,0.2-0.2c0.1-0.2,0.1-0.5-0.2-0.7L6.3,5.4C6,5.2,5.6,5.4,5.6,5.8v4.4 C5.6,10.6,6,10.8,6.3,10.6z'/%3E %3C/g%3E %3C/svg%3E ");
+		/* Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. */
+		/* rotate, play */
+		
 	}
 	&:active, &.active{
 		&::before{
 			background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='rotation_stop' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 16 16' style='enable-background:new 0 0 16 16;' xml:space='preserve'%3E %3Cpath d='M20.4,4.9l3.8-2.2c0.1,0,0.1-0.1,0.2-0.2c0.1-0.2,0.1-0.5-0.2-0.7l-3.8-2.2c-0.3-0.2-0.7,0-0.7,0.4v4.4 C19.6,4.9,20.1,5.1,20.4,4.9z'/%3E %3Cg%3E %3Cpath d='M15.7,7h-1.6c-0.2-1.5-1-2.8-2.2-3.8C9.3,1,5.4,1.4,3.2,4c0,0,0,0,0,0C3,4.3,3,4.6,3.3,4.8S3.8,4.9,4,4.7 c1-1.2,2.4-1.9,4-1.9c2.5,0,4.6,1.7,5.1,4.1h-1.4c-0.1,0-0.1,0-0.2,0.1c-0.1,0.1-0.1,0.3,0,0.4l2,2.4c0,0,0,0,0,0 c0.1,0.1,0.3,0.1,0.4,0l2-2.4c0,0,0.1-0.1,0.1-0.2C16,7.1,15.9,7,15.7,7z'/%3E %3Cpath d='M12,11.3c-0.8,0.9-1.8,1.5-3,1.8c-2.8,0.6-5.5-1.2-6.1-4h1.4c0.1,0,0.3-0.1,0.3-0.3c0-0.1,0-0.1-0.1-0.2l-2-2.4 C2.4,6.1,2.2,6,2.1,6.1c0,0,0,0,0,0l-2,2.4C0,8.7,0,8.9,0.1,9C0.1,9,0.2,9,0.3,9h1.6c0.2,1.5,1,2.8,2.2,3.8 c2.6,2.2,6.6,1.8,8.8-0.8c0,0,0,0,0,0c0.2-0.2,0.1-0.6-0.1-0.7C12.5,11,12.2,11.1,12,11.3z'/%3E %3Cpath d='M9.6,10.4c0.4,0,0.8-0.4,0.8-0.8V6.4c0-0.4-0.4-0.8-0.8-0.8H6.4C6,5.6,5.6,6,5.6,6.4v3.2c0,0.4,0.4,0.8,0.8,0.8H9.6z'/%3E %3C/g%3E %3C/svg%3E");
+			/* Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. */
+			/* rotate, stop*/
 		}	
 	}
 }
