@@ -10,8 +10,9 @@ body { width: 100%; height: 100%; padding: 0; margin: 0; color: #333; }
 
 .main { display: flex; flex-direction: column; }
 @media screen and (min-width: 992px) { .main { flex-direction: row; } }
-.main .plot-area { display: flex; height: calc(50vh + 1.5rem); min-height: calc(50vh + 1.5rem); padding-top: 1.5rem; padding-left: .75rem; padding-right: .75rem; position: relative; }
-@media screen and (min-width: 992px) { .main .plot-area { flex: 1; height: 100vh; max-height: 100vh; padding-top: 0; padding-left: 1.5rem; padding-right: 1.5rem; } }
+.main .plot-area { display: flex; height: calc(50vh + 4rem); min-height: calc(50vh + 4rem); padding-top: 4rem; padding-left: .75rem; padding-right: .75rem; position: relative; }
+@media screen and (min-width: 992px) { .main .plot-area { flex: 1; height: 100vh; max-height: 100vh; padding-top: 3rem; padding-left: 1.5rem; padding-right: 1.5rem; } }
+@media screen and (min-width: 1200px) { .main .plot-area { padding-top: 2rem; } }
 .main .plot-btn { position: absolute; top: .5rem; left: .5rem; z-index: 10; display: flex; flex-direction: row; }
 .main .plot-btn .btn { margin: .5rem; }
 .main .info-panel { padding: .75rem; }

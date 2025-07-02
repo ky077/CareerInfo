@@ -52,9 +52,9 @@ body{
 	}
 	.plot-area{ 
 		display: flex;
-		height: calc(50vh + 1.5rem);
-		min-height: calc(50vh + 1.5rem);
-		padding-top: 1.5rem;
+		height: calc(50vh + 4rem);
+		min-height: calc(50vh + 4rem);
+		padding-top: 4rem;
 		padding-left: .75rem;
 		padding-right: .75rem;
 		position: relative;
@@ -62,9 +62,12 @@ body{
 		flex: 1; 
 		height: 100vh;
 		max-height: 100vh;
-		padding-top: 0;	
+		padding-top: 3rem;	
 		padding-left: 1.5rem;
 		padding-right: 1.5rem;
+		}
+		@media screen and (min-width: 1200px) {
+		padding-top: 2rem;		
 		}
 	}
 	.plot-btn{
