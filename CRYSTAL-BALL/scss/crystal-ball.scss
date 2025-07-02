@@ -152,7 +152,7 @@ body{
 		letter-spacing: .15em;
 		color: $tertiary;
 		filter: drop-shadow(1px 1px $primary) drop-shadow(-1px -1px $primary) drop-shadow(-1px 1px $primary) drop-shadow(1px -1px $primary) 
-			    drop-shadow(0.15rem 0.15rem lighten($primary, 20%));
+			    drop-shadow(0.15rem 0.15rem rgba(lighten($primary, 20%), .5));
 		font-style: italic;
 	}
 	 small{
