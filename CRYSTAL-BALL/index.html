@@ -38,7 +38,7 @@
 	  <div class="plot-btn">
         <button type="button" id="toggleRotation" class="btn btn-custom btn-rotation">旋轉展示</button>
         <!--<button type="button" id="toggleRotation" class="btn-rotation rotating">暫停旋轉</button>	-->
-	    <button type="button" id="moveBtn" class="btn btn-custom btn-move" style=" z-index: 10;left:10rem;">平移按鈕</button>
+	    <button type="button" id="moveBtn" class="btn btn-custom btn-move" style=" z-index: 10;left:10rem;">本人視角</button>
 	  </div>
       <button id="highlightBtn" style="position: absolute; top: 50px; left: 10px; z-index: 10;display:none">閃爍心理學類</button>
     </div>
@@ -423,6 +423,13 @@
 		<small>圖形繪製中，請稍候…</small>
   </div>
 </form>
+<script>
+//demo 關閉loading視窗
+var interval = setTimeout(function() {
+	document.getElementById("loadingMessage").style.display = "none";
+}, 5000);
+</script>	
+	
 <script src="http://140.122.118.47/careerinfo/itemCs_full.js"></script> 
 <script>
         console.log("開始讀取");
@@ -994,7 +1001,7 @@
                     }
                 });
 
-                this.textContent = isMoved ? "回復位置" : "平移按鈕";
+                this.textContent = isMoved ? "回復視角" : "本人視角";
 				if (isMoved) {
 				  this.classList.add("active");
 				} else {
