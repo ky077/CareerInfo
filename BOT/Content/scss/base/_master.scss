@@ -26,7 +26,8 @@ body{
 	background-color: $green-100;
 	//background: url("../images/bg.png"), radial-gradient(circle at 80% 80%, #{$tertiary-300} 0%, #{$primary} 50%, #{$primary-900} 100%);
 	//background: url("../images/bg.png"), linear-gradient(to bottom,  #{$primary-700} 0%, #{$primary} 44%,#{$tertiary-300} 100%);
-background: url("../images/bg.png"), linear-gradient(120deg,  #{$tertiary-300} 0%,  #{$primary} 50%, #{$primary-700} 100%);
+//background: url("../images/bg.png"), linear-gradient(120deg,  #{$tertiary-300} 0%,  #{$primary} 50%, #{$primary-700} 100%);
+	background:  url("../images/bg.png"), radial-gradient(ellipse at center,  $tertiary-100 0%, $tertiary 50%, $primary 100%); 
 
 
 	background-attachment: fixed;
