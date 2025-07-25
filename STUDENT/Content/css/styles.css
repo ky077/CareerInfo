@@ -194,7 +194,8 @@ a { text-underline-offset: 5px; word-break: break-all; }
 .index { display: flex; justify-content: space-around; min-height: calc(100vh - (3rem + 0.3125rem*2 + 0.5rem*2)); overflow-x: hidden; }
 
 .intro-panel .intro-item { display: flex; justify-content: center; align-items: center; flex-direction: column; }
-.intro-panel .intro-img { width: 20vh; height: auto; }
+.intro-panel .intro-img { margin-bottom: 1rem; }
+.intro-panel .intro-img > img { max-height: 25vh; }
 .intro-panel .intro-title { color: #fff; }
 .intro-panel .intro-text { color: rgba(255, 255, 255, 0.85); }
 

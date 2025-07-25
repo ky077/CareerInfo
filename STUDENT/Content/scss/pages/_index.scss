@@ -5,15 +5,19 @@
 	overflow-x: hidden;
 }
 .intro-panel{ 
-	 .intro-item{
+	 .intro-item{ 
 		 display: flex;
 		 justify-content: center;
 		 align-items: center;
 		 flex-direction: column;
+		 //max-height: 50vh
 	}
 	.intro-img{
-		width: 20vh;
-		height: auto;
+		margin-bottom: 1rem;
+		> img{
+			max-height: 25vh;
+			
+		}
 	}
 	.intro-title{
 		color: #fff;
