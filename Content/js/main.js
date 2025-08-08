@@ -205,5 +205,18 @@
 		}
 	});
 	
+	//[心智圖]點擊
+	$('.btn-xmind').click(function(){
+		if ($('#modal-xmind').length === 0) {
+            // 動態載入模態框內容
+            $.get('xmind.html', function(data) {
+                $('body').append(data);
+                $('#modal-xmind').modal('show');
+            });
+        } else {
+            // 顯示已經加載的模態框
+            $('#modal-xmind').modal('show');
+        }
+	});
                
 })(jQuery);

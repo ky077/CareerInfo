@@ -565,6 +565,7 @@
 		.explore-slider-tool {  
 			flex-shrink: 0;
 			display: flex;
+			flex-wrap: wrap;
 			justify-content: center;
 			align-items: center;
 			margin-bottom: .75rem;
@@ -594,6 +595,9 @@
 			.btn-compare{
 				color: $white;
 				filter: brightness(3);
+			}
+			.btn-xmind{
+				color: $white;
 			}
 		}
 		.explore-slider-list{ 
