@@ -209,7 +209,7 @@
 	$('.btn-xmind').click(function(){
 		if ($('#modal-xmind').length === 0) {
             // 動態載入模態框內容
-            $.get('xmind2.html', function(data) {
+            $.get('xmind.html', function(data) {
                 $('body').append(data);
                 $('#modal-xmind').modal('show');
             });
